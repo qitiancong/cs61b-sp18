@@ -30,7 +30,7 @@ public class NBody {
         return arr_p;
     }
 
-    public static String imageToDraw = "images/starfield.jpg"; 
+    private static String imageToDraw = "images/starfield.jpg"; 
 
     public static void main(String[] args) {
         double t = Double.parseDouble(args[0]);
