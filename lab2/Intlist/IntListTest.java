@@ -65,5 +65,10 @@ public class IntListTest {
         assertEquals(exp, IntList.catenate(A, B));
         assertEquals(IntList.of(1, 2, 3), A);
     }
+    @Test
+    public void testDeepCopy() {
+        IntList A = IntList.of(1, 2, 3);
+        IntList B = IntList.deepCopy(A);
+    }
 
 }
