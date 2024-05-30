@@ -96,8 +96,25 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        IntList C = IntList.deepCopy(A);
+        IntList.dcatenate(C,B);
+
+        return C;
     }
+
+    //helper function: return an exact copy of the given IntList
+    public static IntList deepCopy(IntList List) {
+        if (List == null) {
+            return null;
+        } else {
+            IntList result = new IntList(List.first,deepCopy(List.rest));
+            return result;
+        }
+
+    }
+
+
+
 
 
 
