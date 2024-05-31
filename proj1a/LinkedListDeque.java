@@ -6,7 +6,7 @@ public class LinkedListDeque<T> {
         public Node prev;
 
         /** constructor */
-        public Node(T item, Node prev,Node next) {
+        public Node(T item, Node prev, Node next) {
             this.item = item;
             this.prev = prev;
             this.next = next;
@@ -18,18 +18,18 @@ public class LinkedListDeque<T> {
 
     /** create empty List */
     public LinkedListDeque() {
-        this.sentinel = new Node(null,null,null);
+        this.sentinel = new Node(null, null, null);
         this.sentinel.prev = this.sentinel;
         this.sentinel.next = this.sentinel;
         this.size = 0;
     }
 
     /** create List with 1 item of type T */
-    public LinkedListDeque(T item){
-        this.sentinel = new Node(null,null,null);
-        this.sentinel.next = new Node(item,this.sentinel,this.sentinel);
+    public LinkedListDeque(T item) {
+        this.sentinel = new Node(null, null, null);
+        this.sentinel.next = new Node(item, this.sentinel, this.sentinel);
         this.sentinel.next.prev = this.sentinel;
-        this.sentinel.next.next=this.sentinel;
+        this.sentinel.next.next = this.sentinel;
         this.sentinel.prev = this.sentinel.next;
         this.size += 1;
     }
@@ -62,29 +62,31 @@ public class LinkedListDeque<T> {
         return this.size;
     }
 
-    /** Removes and returns the item at the front of the deque. If no such item exists, returns null. */
-    public T removeFirst(){
+    /** Removes and returns the item at the front of the deque.
+     * If no such item exists, returns null. */
+    public T removeFirst() {
         if (this.isEmpty()) {
-            return null ;
+            return null;
         } else if (this.size() == 1) {
-            T return_item = this.sentinel.next.item;
+            T result = this.sentinel.next.item;
             this.sentinel.next = this.sentinel;
             this.sentinel.prev = this.sentinel;
             this.size -= 1;
-            return return_item;
+            return result;
         } else {
-            T return_item = this.sentinel.next.item;
+            T result = this.sentinel.next.item;
             this.sentinel.next.next.prev = null;
             this.sentinel.next.prev = null;
             this.sentinel.next = this.sentinel.next.next;
             this.sentinel.next.prev = this.sentinel;
             this.size -= 1;
-            return return_item;
+            return result;
         }
 
     }
 
-    /** Removes and returns the item at the back of the deque. If no such item exists, returns null. */
+    /** Removes and returns the item at the back of the deque.
+     * If no such item exists, returns null. */
     public T removeLast() {
         if (this.size < 2) {
             return this.removeFirst(); //same procedure as removeFirst for length = 0 and 1;
@@ -106,7 +108,7 @@ public class LinkedListDeque<T> {
             int i = 0;
             while(i != index) {
                 p = p.next;
-                i +=1;
+                i += 1;
             }
             return p.item;
         }
@@ -137,6 +139,4 @@ public class LinkedListDeque<T> {
         L1.printDeque();
         //System.out.println(L1.get(3));
     }
-
-
 }
