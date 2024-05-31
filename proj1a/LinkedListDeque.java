@@ -145,18 +145,4 @@ public class LinkedListDeque<T> {
             }
         }
     }
-
-
-    /** main method to test functions, delete later */
-    public static void main (String[] args) {
-        LinkedListDeque<String> L1 = new LinkedListDeque<>("abc");
-        L1.addFirst("in front");
-        L1.addLast("at last");
-        L1.addFirst("in front more");
-        L1.addLast("at last more");
-        //System.out.println(L1.removeLast());
-        //System.out.println(L1.removeLast());
-        L1.printDeque();
-        System.out.println(L1.getRecursive(3));
-    }
 }
