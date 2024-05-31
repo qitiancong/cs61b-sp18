@@ -36,8 +36,8 @@ public class LinkedListDeque<T> {
 
     /**Adds an item of type T to the front of the deque.*/
     public void addFirst(T item) {
-        this.sentinel.next = new Node(item,this.sentinel,this.sentinel.prev);
-        this.sentinel.prev.prev = this.sentinel.next;
+        this.sentinel.next = new Node(item,this.sentinel,this.sentinel.next);
+        this.sentinel.next.next.prev = this.sentinel.next;
         this.size += 1;
     }
 
@@ -61,11 +61,52 @@ public class LinkedListDeque<T> {
     public int size() {
         return this.size;
     }
+
+    /** Removes and returns the item at the front of the deque. If no such item exists, returns null. */
+    public T removeFirst(){
+        if (this.isEmpty()) {
+            return null ;
+        } else if (this.size() == 1) {
+            T return_item = this.sentinel.next.item;
+            this.sentinel.next = this.sentinel;
+            this.sentinel.prev = this.sentinel;
+            this.size -= 1;
+            return return_item;
+        } else {
+            T return_item = this.sentinel.next.item;
+            this.sentinel.next.next.prev = null;
+            this.sentinel.next.prev = null;
+            this.sentinel.next = this.sentinel.next.next;
+            this.sentinel.next.prev = this.sentinel;
+            this.size -= 1;
+            return return_item;
+        }
+
+    }
+
+    /** Removes and returns the item at the back of the deque. If no such item exists, returns null. */
+    public T removeLast() {
+        return null;
+    }
+
+    /** Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth. If no such item exists, returns null. Must not alter the deque! */
+    public T get(int index) {
+        return null;
+    }
+
+     /** Prints the items in the deque from first to last, separated by a space.*/
+    public void printDeque() {
+
+    }
     /** main method to test functions, delete later */
     public static void main (String[] args) {
-        LinkedListDeque<String> L1 = new LinkedListDeque<>();
-        //L1.addFirst("in front");
+        LinkedListDeque<String> L1 = new LinkedListDeque<>("abc");
+        L1.addFirst("in front");
         L1.addLast("at last");
+        L1.addFirst("in front more");
+        L1.addLast("at last more");
+        System.out.println(L1.removeFirst());
+        System.out.println(L1.removeFirst());
     }
 
 
