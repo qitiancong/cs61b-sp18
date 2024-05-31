@@ -24,15 +24,15 @@ public class LinkedListDeque<T> {
         this.size = 0;
     }
 
-    /** create List with 1 item of type T */
-    public LinkedListDeque(T item) {
-        this.sentinel = new Node(null, null, null);
-        this.sentinel.next = new Node(item, this.sentinel, this.sentinel);
-        this.sentinel.next.prev = this.sentinel;
-        this.sentinel.next.next = this.sentinel;
-        this.sentinel.prev = this.sentinel.next;
-        this.size += 1;
-    }
+//    /** create List with 1 item of type T */
+//    public LinkedListDeque(T item) {
+//        this.sentinel = new Node(null, null, null);
+//        this.sentinel.next = new Node(item, this.sentinel, this.sentinel);
+//        this.sentinel.next.prev = this.sentinel;
+//        this.sentinel.next.next = this.sentinel;
+//        this.sentinel.prev = this.sentinel.next;
+//        this.size += 1;
+//    }
 
     /**Adds an item of type T to the front of the deque.*/
     public void addFirst(T item) {
