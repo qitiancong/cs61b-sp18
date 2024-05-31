@@ -99,7 +99,9 @@ public class LinkedListDeque<T> {
         }
     }
 
-    /** Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth. If no such item exists, returns null. Must not alter the deque! */
+    /** Gets the item at the given index, where 0 is the front,
+     * 1 is the next item, and so forth.
+     * If no such item exists, returns null. Must not alter the deque! */
     public T get(int index) {
         if (this.size == 0) { //List of size has no item
             return null;
@@ -114,6 +116,23 @@ public class LinkedListDeque<T> {
         }
     }
 
+    /** recursive get using helper function */
+    private T getItemAtIndex(int index, int count, Node p) {
+        if (index == count) {
+            return p.item;
+        }
+        return this.getItemAtIndex(index, count + 1, p.next);
+    }
+    public T getRecursive(int index) {
+        if (this.size == 0 || index >= this.size || index < 0) {
+            return null;
+        }
+        int count = 0;
+        Node p = this.sentinel.next;
+        return this.getItemAtIndex(index,count,p);
+    }
+
+
      /** Prints the items in the deque from first to last, separated by a space.*/
     public void printDeque() {
         if (this.size == 0) {
@@ -127,6 +146,7 @@ public class LinkedListDeque<T> {
         }
     }
 
+
     /** main method to test functions, delete later */
     public static void main (String[] args) {
         LinkedListDeque<String> L1 = new LinkedListDeque<>("abc");
@@ -137,6 +157,6 @@ public class LinkedListDeque<T> {
         //System.out.println(L1.removeLast());
         //System.out.println(L1.removeLast());
         L1.printDeque();
-        //System.out.println(L1.get(3));
+        System.out.println(L1.getRecursive(3));
     }
 }
