@@ -38,11 +38,34 @@ public class LinkedListDeque<T> {
     public void addFirst(T item) {
         this.sentinel.next = new Node(item,this.sentinel,this.sentinel.prev);
         this.sentinel.prev.prev = this.sentinel.next;
+        this.size += 1;
+    }
+
+    /** Adds an item of type T to the back of the deque.*/
+    public void addLast(T item) {
+        if (this.isEmpty()) {
+            this.addFirst(item);
+        } else {
+            this.sentinel.prev.next = new Node(item,this.sentinel.prev,this.sentinel);
+            this.sentinel.prev = this.sentinel.prev.next;
+            this.size += 1;
+        }
+    }
+
+    /** Returns true if deque is empty, false otherwise.*/
+    public boolean isEmpty() {
+        return this.size == 0;
+    }
+
+    /** Returns the number of items in the deque.*/
+    public int size() {
+        return this.size;
     }
     /** main method to test functions, delete later */
     public static void main (String[] args) {
-        LinkedListDeque<String> L1 = new LinkedListDeque<>("abcd");
-        L1.addFirst("efg");
+        LinkedListDeque<String> L1 = new LinkedListDeque<>();
+        //L1.addFirst("in front");
+        L1.addLast("at last");
     }
 
 
