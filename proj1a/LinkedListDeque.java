@@ -1,9 +1,9 @@
 public class LinkedListDeque<T> {
     //use circular LL in lecture 5 slides
     private class Node {
-        public T item;
-        public Node next;
-        public Node prev;
+        private T item;
+        private Node next;
+        private Node prev;
 
         /** constructor */
         public Node(T item, Node prev, Node next) {
@@ -36,7 +36,7 @@ public class LinkedListDeque<T> {
 
     /**Adds an item of type T to the front of the deque.*/
     public void addFirst(T item) {
-        this.sentinel.next = new Node(item,this.sentinel,this.sentinel.next);
+        this.sentinel.next = new Node(item, this.sentinel, this.sentinel.next);
         this.sentinel.next.next.prev = this.sentinel.next;
         this.size += 1;
     }
@@ -46,7 +46,7 @@ public class LinkedListDeque<T> {
         if (this.isEmpty()) {
             this.addFirst(item);
         } else {
-            this.sentinel.prev.next = new Node(item,this.sentinel.prev,this.sentinel);
+            this.sentinel.prev.next = new Node(item, this.sentinel.prev, this.sentinel);
             this.sentinel.prev = this.sentinel.prev.next;
             this.size += 1;
         }
@@ -91,11 +91,11 @@ public class LinkedListDeque<T> {
         if (this.size < 2) {
             return this.removeFirst(); //same procedure as removeFirst for length = 0 and 1;
         } else {
-            T return_item = this.sentinel.prev.item;
+            T returnItem = this.sentinel.prev.item;
             this.sentinel.prev.prev.next = this.sentinel;
             this.sentinel.prev = this.sentinel.prev.prev;
             this.size -= 1;
-            return return_item;
+            return returnItem;
         }
     }
 
@@ -108,7 +108,7 @@ public class LinkedListDeque<T> {
         } else {
             Node p = this.sentinel.next; //pointer for 0th Node
             int i = 0;
-            while(i != index) {
+            while (i != index) {
                 p = p.next;
                 i += 1;
             }
@@ -129,7 +129,7 @@ public class LinkedListDeque<T> {
         }
         int count = 0;
         Node p = this.sentinel.next;
-        return this.getItemAtIndex(index,count,p);
+        return this.getItemAtIndex(index, count, p);
     }
 
 
@@ -145,4 +145,7 @@ public class LinkedListDeque<T> {
             }
         }
     }
+    
 }
+
+

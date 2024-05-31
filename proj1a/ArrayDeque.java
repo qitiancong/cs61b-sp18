@@ -14,9 +14,9 @@ public class ArrayDeque<T> {
 
     /** helper method. Resize underlying array to given capacity. */
     private  void resize(int capacity) {
-        T[] new_array = (T[]) new Object[capacity];
-        System.arraycopy(this.array, this.nextFirst + 1, new_array, capacity / 4, this.size);
-        this.array = new_array;
+        T[] newArray = (T[]) new Object[capacity];
+        System.arraycopy(this.array, this.nextFirst + 1, newArray, capacity / 4, this.size);
+        this.array = newArray;
         this.nextFirst = capacity / 4 - 1;
         this.nextLast = this.nextFirst + this.size + 1;
     }
@@ -57,7 +57,7 @@ public class ArrayDeque<T> {
     public void printDeque() {
         //TODO
         int index = this.nextFirst + 1;
-        while(this.array[index] != null) {
+        while (this.array[index] != null) {
             System.out.print(this.array[index] + " ");
             index += 1;
         }
@@ -65,20 +65,20 @@ public class ArrayDeque<T> {
 
     public T removeFirst() {
         //TODO
-        T return_item = this.array[this.nextFirst + 1];
+        T returnItem = this.array[this.nextFirst + 1];
         this.array[this.nextFirst + 1] = null;
         this.nextFirst += 1;
         this.size -= 1;
-        return return_item;
+        return returnItem;
     }
 
     public T removeLast() {
         //TODO
-        T return_item = this.array[this.nextLast - 1];
+        T returnItem = this.array[this.nextLast - 1];
         this.array[this.nextLast - 1] = null;
         this.nextLast -= 1;
         this.size -= 1;
-        return return_item;
+        return returnItem;
     }
 
     public T get(int index) {
