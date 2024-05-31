@@ -86,7 +86,15 @@ public class LinkedListDeque<T> {
 
     /** Removes and returns the item at the back of the deque. If no such item exists, returns null. */
     public T removeLast() {
-        return null;
+        if (this.size < 2) {
+            return this.removeFirst(); //same procedure as removeFirst for length = 0 and 1;
+        } else {
+            T return_item = this.sentinel.prev.item;
+            this.sentinel.prev.prev.next = this.sentinel;
+            this.sentinel.prev = this.sentinel.prev.prev;
+            this.size -= 1;
+            return return_item;
+        }
     }
 
     /** Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth. If no such item exists, returns null. Must not alter the deque! */
@@ -105,8 +113,8 @@ public class LinkedListDeque<T> {
         L1.addLast("at last");
         L1.addFirst("in front more");
         L1.addLast("at last more");
-        System.out.println(L1.removeFirst());
-        System.out.println(L1.removeFirst());
+        System.out.println(L1.removeLast());
+        System.out.println(L1.removeLast());
     }
 
 
