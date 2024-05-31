@@ -99,7 +99,17 @@ public class LinkedListDeque<T> {
 
     /** Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth. If no such item exists, returns null. Must not alter the deque! */
     public T get(int index) {
-        return null;
+        if (this.size == 0) { //List of size has no item
+            return null;
+        } else {
+            Node p = this.sentinel.next; //pointer for 0th Node
+            int i = 0;
+            while(i != index) {
+                p = p.next;
+                i +=1;
+            }
+            return p.item;
+        }
     }
 
      /** Prints the items in the deque from first to last, separated by a space.*/
@@ -113,8 +123,10 @@ public class LinkedListDeque<T> {
         L1.addLast("at last");
         L1.addFirst("in front more");
         L1.addLast("at last more");
-        System.out.println(L1.removeLast());
-        System.out.println(L1.removeLast());
+        //System.out.println(L1.removeLast());
+        //System.out.println(L1.removeLast());
+        System.out.println(L1.get(0));
+        System.out.println(L1.get(3));
     }
 
 
