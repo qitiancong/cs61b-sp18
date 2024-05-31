@@ -114,8 +114,17 @@ public class LinkedListDeque<T> {
 
      /** Prints the items in the deque from first to last, separated by a space.*/
     public void printDeque() {
-
+        if (this.size == 0) {
+            System.out.println("Deque is empty");
+        } else {
+            Node p = this.sentinel.next;
+            while (p != this.sentinel) { //p has not reached last Node yet
+                System.out.print(p.item + " ");
+                p = p.next;
+            }
+        }
     }
+
     /** main method to test functions, delete later */
     public static void main (String[] args) {
         LinkedListDeque<String> L1 = new LinkedListDeque<>("abc");
@@ -125,8 +134,8 @@ public class LinkedListDeque<T> {
         L1.addLast("at last more");
         //System.out.println(L1.removeLast());
         //System.out.println(L1.removeLast());
-        System.out.println(L1.get(0));
-        System.out.println(L1.get(3));
+        L1.printDeque();
+        //System.out.println(L1.get(3));
     }
 
 
