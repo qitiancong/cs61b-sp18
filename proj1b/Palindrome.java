@@ -14,11 +14,30 @@ public class Palindrome {
         }
         Deque<Character> wordDeque = wordToDeque(word);
         Deque<Character> newDeque = new LinkedListDeque<>();
-        for(int i = 0; i < wordDeque.size(); i++) {
+        int size = wordDeque.size();
+        for(int i = 0; i < size; i++) {
             newDeque.addLast(wordDeque.removeLast());
         }
         for(int i = 0; i < newDeque.size(); i++) {
             if (word.charAt(i) != newDeque.get(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isPalindrome(String word, CharacterComparator cc) {
+        if (word.length() == 0 || word.length() == 1) {
+            return true;
+        }
+        Deque<Character> wordDeque = wordToDeque(word);
+        Deque<Character> newDeque = new LinkedListDeque<>();
+        int size = wordDeque.size();
+        for(int i = 0; i < size; i++) {
+            newDeque.addLast(wordDeque.removeLast());
+        }
+        for(int i = 0; i < newDeque.size(); i++) {
+            if (! cc.equalChars(word.charAt(i), newDeque.get(i))) {
                 return false;
             }
         }
