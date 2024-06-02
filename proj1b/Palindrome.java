@@ -30,6 +30,12 @@ public class Palindrome {
         if (word.length() == 0 || word.length() == 1) {
             return true;
         }
+        if (word.length() % 2 != 0) {
+            int endIndexA = (word.length() - 1) / 2;
+            String a = word.substring(0,endIndexA);
+            String b = word.substring(endIndexA + 1);
+            word = a + b;
+        }
         Deque<Character> wordDeque = wordToDeque(word);
         Deque<Character> newDeque = new LinkedListDeque<>();
         int size = wordDeque.size();

@@ -33,7 +33,7 @@ public class TestPalindrome {
     public void TestPalindromeOffByOne() {
         assertFalse(palindrome.isPalindrome("abc", cc));
         assertFalse(palindrome.isPalindrome("racecar", cc));
-        assertTrue(palindrome.isPalindrome("flke", cc));
+        assertTrue(palindrome.isPalindrome("flake", cc));
 
     }
 }
