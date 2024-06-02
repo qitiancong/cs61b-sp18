@@ -131,8 +131,9 @@ public class LinkedListDeque<T> implements Deque<T> {
 
 
      /** Prints the items in the deque from first to last, separated by a space.*/
-     @Override
-    public void printDeque() {
+
+    @Override
+     public void printDeque() {
         if (this.size == 0) {
             System.out.println("Deque is empty");
         } else {

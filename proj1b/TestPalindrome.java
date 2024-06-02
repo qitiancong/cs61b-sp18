@@ -17,7 +17,7 @@ public class TestPalindrome {
     } //Uncomment this class once you've created your Palindrome class.
 
     @Test
-    public void TestPalindrome() {
+    public void testIsPalindrome() {
         String a = "racecar";
         String b = "abc";
         String c = "a";
@@ -30,7 +30,7 @@ public class TestPalindrome {
 
     OffByOne cc = new OffByOne();
     @Test
-    public void TestPalindromeOffByOne() {
+    public void testPalindromeOffByOne() {
         assertFalse(palindrome.isPalindrome("abc", cc));
         assertFalse(palindrome.isPalindrome("racecar", cc));
         assertTrue(palindrome.isPalindrome("flake", cc));
